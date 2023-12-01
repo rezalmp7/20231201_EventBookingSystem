@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\EventUserController;
+use App\Http\Controllers\BookedUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,20 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/login', [LoginController::class, "index"]);
+Route::get('/logout', [LoginController::class, "logout"]);
 Route::post('/authentication', [LoginController::class, "authentication"]);
 
-Route::resource('dashboard', DashboardController::class);
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+    Route::resource('dashboard', DashboardController::class);
+    Route::resource('user', UsersController::class);
+});
+
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::get('listEvent', [EventUserController::class, 'index']);
+    Route::get('listEvent/{id}', [EventUserController::class, 'book']);
+    Route::get('listBooked', [BookedUserController::class, 'index']);
+});
+
+Route::middleware(['auth', 'user-access:user|admin'])->group(function () {
+    Route::resource('event', EventsController::class);
+});

@@ -1,0 +1,84 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/getEvent": {
+            "get": {
+                "summary": "Get logged-in user details",
+                "operationId": "43e6dcdb64f2bd4f0d16a529a86a9cbe",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "summary": "Authenticate user and generate JWT token",
+                "operationId": "2c8feecb1f1f46c77e1b093040a6a851",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "summary": "Get logged-in user details",
+                "operationId": "2bfa9f3be1ba3afed501575263f50891",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
