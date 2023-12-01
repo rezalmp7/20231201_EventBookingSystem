@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\EventUserController;
 use App\Http\Controllers\BookedUserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,5 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 Route::middleware(['auth', 'user-access:user|admin'])->group(function () {
     Route::resource('event', EventsController::class);
+    Route::resource('profile', ProfileController::class);
 });

@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                     <div class="inline">
-                        <a class="link-dark" style="text-decoration: none;" href="{{ url('/') }}/profile/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>, <a href="{{ url('/') }}/logout">Logout</a>
+                        <a class="link-dark" style="text-decoration: none;" href="{{ url('/') }}/profile/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>,<a href="{{ url('/') }}/profile">Profile</a>, <a href="{{ url('/') }}/logout">Logout</a>
                     </div>
                 </div>
             </nav>
